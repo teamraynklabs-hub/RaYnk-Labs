@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /RaYnkLabs(PHP)/public/
+    
+    # Allow direct access to files and directories
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # For all other requests, serve the file/directory as-is
+    RewriteRule ^(.*)$ $1 [L,QSA]
+</IfModule>
