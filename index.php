@@ -404,9 +404,12 @@ $meetupModals = [
     <section class="turning-point" id="turning-point">
     <div class="container">
         <div class="tp-content">
+
             <div class="tp-text">
                 <h2>Turning Point App</h2>
-                <p class="tp-description">Your all-in-one platform for career growth, skill development, and scholarship opportunities.</p>
+                <p class="tp-description">
+                    Your all-in-one platform for career growth, skill development, and scholarship opportunities.
+                </p>
 
                 <div class="tp-features">
                     <div class="tp-feature">
@@ -439,19 +442,23 @@ $meetupModals = [
                 </a>
             </div>
 
-            <div class="tp-mockup">
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                        <div class="mockup-content">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="phone-frame">
+    
+    <!-- Website inside screen -->
+    <div class="iframe-screen">
+        <iframe src="https://turning-point-01.onrender.com/" scrolling="no"></iframe>
+    </div>
+
+    <!-- Mobile mockup image -->
+    <img src="assets/images/mocup.png" class="mockup-overlay">
+
+</div>
+
 
         </div>
     </div>
 </section>
+
 
     <!-- Team Section -->
 <section class="team" id="team">
