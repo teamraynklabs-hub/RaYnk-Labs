@@ -154,8 +154,8 @@ $meetupModals = [
 <?php include __DIR__ . '/includes/header.php'; ?>
 <?php include __DIR__ . '/includes/alert.php'; ?>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+   <!-- Hero Section -->
+<section class="hero" id="home">
     <div class="hero-bg">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -163,19 +163,20 @@ $meetupModals = [
     </div>
 
     <div class="container hero-content">
-        <h1 class="hero-title">RaYnk Labs</h1>
+        <h1 class="hero-title fade-in">RaYnk Labs</h1>
 
-        <div class="hero-subtitle">
+        <p class="hero-subtitle fade-in-delay">
             <span class="typewriter" id="typewriter">
                 Learn • Earn • Grow • Innovate
             </span>
-        </div>
+        </p>
 
-        <div class="hero-buttons">
+        <div class="hero-buttons fade-in-delay-2">
             <a href="#services" class="btn btn-primary">Explore Services</a>
             <a href="#community" class="btn btn-secondary">Join Community</a>
         </div>
     </div>
+
     <div class="scroll-indicator">
         <div class="mouse"></div>
     </div>
