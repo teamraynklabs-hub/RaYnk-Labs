@@ -298,7 +298,7 @@ Small Mobile: 320px - 479px
 
 5. **Access the application**
    ```
-   http://localhost/projects/RaYnk-Labs/public/index.php
+   http://localhost/raynk-labs/RaYnk-Labs/public/index.php
    ```
 
 ---

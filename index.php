@@ -156,23 +156,32 @@ $meetupModals = [
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-bg">
-            <div class="blob blob-1"></div>
-            <div class="blob blob-2"></div>
-            <div class="blob blob-3"></div>
+    <div class="hero-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container hero-content">
+        <h1 class="hero-title">RaYnk Labs</h1>
+
+        <div class="hero-subtitle">
+            <span class="typewriter" id="typewriter">
+                Learn • Earn • Grow • Innovate
+            </span>
         </div>
-        <div class="container hero-content">
-            <h1 class="hero-title fade-in">RaYnk Labs — Learn • Earn • Grow • Innovate</h1>
-            <p class="hero-subtitle fade-in-delay">A student-led innovation lab building tools, education, and opportunities for youth.</p>
-            <div class="hero-buttons fade-in-delay-2">
-                <a href="#services" class="btn btn-primary">Explore Services</a>
-                <a href="#community" class="btn btn-secondary">Join Community</a>
-            </div>
+
+        <div class="hero-buttons">
+            <a href="#services" class="btn btn-primary">Explore Services</a>
+            <a href="#community" class="btn btn-secondary">Join Community</a>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-        </div>
-    </section>
+    </div>
+    <div class="scroll-indicator">
+        <div class="mouse"></div>
+    </div>
+</section>
+
+    
 
     <!-- About Section -->
     <section class="about" id="about">
@@ -361,52 +370,64 @@ $meetupModals = [
         </div>
     </section>
 
-    <!-- Meetups & Podcasts Section -->
-    <section class="meetups" id="meetups">
-        <div class="container">
-            <h2 class="section-title">Meetups & Podcasts</h2>
-            <div class="meetups-grid">
-                <div class="event-card">
-                    <div class="event-badge">Free</div>
-                    <div class="event-image">
-                        <i class="fas fa-calendar-day"></i>
-                    </div>
-                    <h3>Weekly Tech Meetup</h3>
-                    <p class="event-date">Every Saturday, 6 PM IST</p>
-                    <p>Join fellow students for tech discussions, project showcases, and networking</p>
-                    <button type="button" class="btn-event" data-bs-toggle="modal" data-bs-target="#meetupModal-weekly-tech-meetup">Register</button>
+
+<!-- Meetups & Podcasts Section -->
+<section class="meetups" id="meetups">
+    <div class="container">
+        <h2 class="section-title">Meetups & Podcasts</h2>
+        <p class="section-subtitle">Join our weekly events and inspiring conversations</p>
+
+        <div class="meetups-grid">
+            <div class="event-card">
+                <div class="event-badge">Free</div>
+                <div class="event-image">
+                    <i class="fas fa-calendar-day"></i>
                 </div>
-                <div class="event-card">
-                    <div class="event-badge">Free</div>
-                    <div class="event-image">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h3>Masterclass Series</h3>
-                    <p class="event-date">Monthly Sessions</p>
-                    <p>Expert-led sessions on advanced topics in tech and entrepreneurship</p>
-                    <button type="button" class="btn-event" data-bs-toggle="modal" data-bs-target="#meetupModal-masterclass-series">Register</button>
+                <h3>Weekly Tech Meetup</h3>
+                <p class="event-date">Every Saturday, 6 PM IST</p>
+                <p>Join fellow students for tech discussions, project showcases, and networking</p>
+                <button type="button" class="btn-event" data-bs-toggle="modal" data-bs-target="#meetupModal-weekly-tech-meetup">
+                    Register Now
+                </button>
+            </div>
+
+            <div class="event-card">
+                <div class="event-badge">Free</div>
+                <div class="event-image">
+                    <i class="fas fa-chalkboard-teacher"></i>
                 </div>
-                <div class="event-card">
-                    <div class="event-badge">Free</div>
-                    <div class="event-image">
-                        <i class="fas fa-podcast"></i>
-                    </div>
-                    <h3>Student Innovators Podcast</h3>
-                    <p class="event-date">Weekly Episodes</p>
-                    <p>Stories, insights, and journeys of successful student entrepreneurs</p>
-                    <button type="button" class="btn-event" data-bs-toggle="modal" data-bs-target="#meetupModal-student-podcast">Listen Now</button>
+                <h3>Masterclass Series</h3>
+                <p class="event-date">Monthly Sessions</p>
+                <p>Expert-led sessions on advanced topics in tech and entrepreneurship</p>
+                <button type="button" class="btn-event" data-bs-toggle="modal" data-bs-target="#meetupModal-masterclass-series">
+                    Register Now
+                </button>
+            </div>
+
+            <div class="event-card">
+                <div class="event-badge">Free</div>
+                <div class="event-image">
+                    <i class="fas fa-podcast"></i>
                 </div>
+                <h3>Student Innovators Podcast</h3>
+                <p class="event-date">Weekly Episodes</p>
+                <p>Stories, insights, and journeys of successful student entrepreneurs</p>
+                <button type="button" class="btn-event" data-bs-toggle="modal" data-bs-target="#meetupModal-student-podcast">
+                    Listen Now
+                </button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Turning Point App Section -->
-    <section class="turning-point" id="turning-point">
+<section class="turning-point" id="turning-point">
     <div class="container">
         <div class="tp-content">
 
+            <!-- Text Content -->
             <div class="tp-text">
-                <h2>Turning Point App</h2>
+                <h2 class="section-title">Turning Point App</h2>
                 <p class="tp-description">
                     Your all-in-one platform for career growth, skill development, and scholarship opportunities.
                 </p>
@@ -419,7 +440,6 @@ $meetupModals = [
                             <p>Access exclusive scholarship opportunities</p>
                         </div>
                     </div>
-
                     <div class="tp-feature">
                         <i class="fas fa-chart-line"></i>
                         <div>
@@ -427,7 +447,6 @@ $meetupModals = [
                             <p>Monitor your progress and growth</p>
                         </div>
                     </div>
-
                     <div class="tp-feature">
                         <i class="fas fa-briefcase"></i>
                         <div>
@@ -438,21 +457,24 @@ $meetupModals = [
                 </div>
 
                 <a href="https://turning-point-01.onrender.com/" target="_blank" class="btn btn-primary btn-large">
-                    <i class="fas fa-arrow-right"></i> Explore Turning Point
+                    Explore Turning Point
                 </a>
             </div>
 
-            <div class="phone-frame">
-    
-    <!-- Website inside screen -->
-    <div class="iframe-screen">
-        <iframe src="https://turning-point-01.onrender.com/" scrolling="no"></iframe>
+            <!-- Phone Mockup (Hidden on Mobile) -->
+            <div class="tp-mockup">
+                <div class="phone-frame">
+                    <div class="iframe-screen">
+                        <iframe src="https://turning-point-01.onrender.com/" loading="lazy"></iframe>
+                    </div>
+                    <img src="assets/images/mocup.png" alt="Turning Point App Mockup" class="mockup-overlay">
+                </div>
+            </div>
+
+        </div>
     </div>
+</section>
 
-    <!-- Mobile mockup image -->
-    <img src="assets/images/mocup.png" class="mockup-overlay">
-
-</div>
 
 
         </div>

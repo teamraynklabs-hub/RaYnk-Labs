@@ -27,7 +27,7 @@ session_start();
             <h1 class="hero-title fade-in">RaYnk Labs — Learn • Earn • Grow • Innovate</h1>
             <p class="hero-subtitle fade-in-delay">A student-led innovation lab building tools, education, and opportunities for youth.</p>
             <div class="hero-buttons fade-in-delay-2">
-                <a href="/projects/public/services.php" class="btn btn-primary">Explore Services</a>
+                <a href="/raynk-labs/public/services.php" class="btn btn-primary">Explore Services</a>
                 <a href="#team" class="btn btn-secondary">Meet Team</a>
             </div>
         </div>

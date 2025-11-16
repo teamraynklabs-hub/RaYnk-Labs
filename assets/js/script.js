@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.getElementById('navLinks') || document.querySelector('.nav-links');
-    
+
     if (mobileMenuBtn && navLinks) {
         // Toggle menu on button click
         mobileMenuBtn.addEventListener('click', (e) => {
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             navLinks.classList.toggle('mobile-active');
             mobileMenuBtn.classList.toggle('active');
-            
+
             // Force display
             if (navLinks.classList.contains('mobile-active')) {
                 navLinks.style.display = 'flex';
@@ -18,17 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 navLinks.style.display = 'none';
             }
         });
-        
-        // Close menu when link is clicked
-        const allLinks = navLinks.querySelectorAll('a');
-        allLinks.forEach(link => {
+
+        // Close menu ONLY on mobile when a nav link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('mobile-active');
-                mobileMenuBtn.classList.remove('active');
-                navLinks.style.display = 'none';
+                if (window.innerWidth <= 968 && navLinks.classList.contains('mobile-active')) {
+                    navLinks.classList.remove('mobile-active');
+                    mobileMenuBtn.classList.remove('active');
+                }
             });
         });
-        
+
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.navbar') && !e.target.closest('.nav-links')) {
@@ -49,10 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             const hashIndex = href.indexOf('#');
-            
+
             if (hashIndex > -1) {
                 const hash = href.substring(hashIndex);
-                
+
                 // If the hash exists on this page, smooth scroll to it
                 if (document.querySelector(hash)) {
                     e.preventDefault();
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const elementsToAnimate = document.querySelectorAll(
         '.about-card, .service-card, .course-card, .tool-card, .event-card, .team-card'
     );
-    
+
     elementsToAnimate.forEach(el => {
         observer.observe(el);
     });
@@ -101,7 +101,7 @@ if (navbar) {
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
         const isLightMode = document.body.classList.contains('light-mode');
-        
+
         if (currentScroll > 100) {
             if (isLightMode) {
                 navbar.style.background = 'rgba(255, 255, 255, 0.98)';
@@ -118,7 +118,7 @@ if (navbar) {
             }
             navbar.style.boxShadow = 'none';
         }
-        
+
         lastScroll = currentScroll;
     });
 }
@@ -137,7 +137,7 @@ if (contactForm) {
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const blobs = document.querySelectorAll('.blob');
-    
+
     blobs.forEach((blob, index) => {
         const speed = (index + 1) * 0.1;
         blob.style.transform = `translateY(${scrolled * speed}px)`;
@@ -158,20 +158,20 @@ window.addEventListener('load', () => {
 });
 
 // Light/Dark Mode Toggle - Enhanced with immediate execution
-(function() {
+(function () {
     'use strict';
-    
+
     function initThemeToggle() {
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const body = document.body;
-        
+
         if (!themeToggle || !themeIcon) {
             // Retry after a short delay if elements not found
             setTimeout(initThemeToggle, 100);
             return;
         }
-        
+
         // Check for saved theme preference or default to dark mode
         const currentTheme = localStorage.getItem('theme') || 'dark';
         if (currentTheme === 'light') {
@@ -183,14 +183,14 @@ window.addEventListener('load', () => {
             themeIcon.classList.remove('fa-sun');
             themeIcon.classList.add('fa-moon');
         }
-        
+
         // Add click event listener
-        themeToggle.addEventListener('click', function(e) {
+        themeToggle.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            
+
             body.classList.toggle('light-mode');
-            
+
             if (body.classList.contains('light-mode')) {
                 localStorage.setItem('theme', 'light');
                 themeIcon.classList.remove('fa-moon');
@@ -202,7 +202,7 @@ window.addEventListener('load', () => {
             }
         });
     }
-    
+
     // Initialize on DOM ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initThemeToggle);
@@ -210,3 +210,48 @@ window.addEventListener('load', () => {
         initThemeToggle();
     }
 })();
+
+function initTypewriter() {
+    const typewriter = document.getElementById('typewriter');
+    if (!typewriter) return;
+
+    const phrases = [
+        "Learn • Earn • Grow • Innovate",
+        "Student-Led Innovation Lab",
+        "Building Tools for Youth",
+        "Empowering Future Creators"
+    ];
+
+    let index = 0;
+    let char = 0;
+    let deleting = false;
+
+    function type() {
+        let current = phrases[index];
+
+        if (!deleting) {
+            typewriter.textContent = current.substring(0, char + 1);
+            char++;
+
+            if (char === current.length) {
+                deleting = true;
+                setTimeout(type, 2200);
+                return;
+            }
+        } else {
+            typewriter.textContent = current.substring(0, char - 1);
+            char--;
+
+            if (char === 0) {
+                deleting = false;
+                index = (index + 1) % phrases.length;
+            }
+        }
+
+        setTimeout(type, deleting ? 60 : 120);
+    }
+
+    setTimeout(type, 1000);
+}
+
+initTypewriter();

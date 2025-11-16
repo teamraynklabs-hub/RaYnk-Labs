@@ -195,62 +195,346 @@ $teamMembers = $pdo->query("SELECT * FROM team_members ORDER BY order_index, id"
             --bg: #0f0f1e;
             --card: rgba(20, 20, 40, 0.8);
             --border: rgba(59, 167, 255, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
         }
+        
         body {
             background: var(--bg);
-            color: white;
+            color: var(--text-primary);
             min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        
         .admin-nav {
             background: rgba(10, 10, 30, 0.95);
             border-bottom: 1px solid var(--border);
             backdrop-filter: blur(10px);
+            padding: 12px 0;
         }
+        
         .brand {
             font-weight: 800;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-size: 1.5rem;
         }
+        
         .content-card {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 20px;
             margin-bottom: 20px;
+            transition: all 0.3s ease;
+            height: 100%;
         }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 167, 255, 0.1);
+        }
+        
         .btn-action {
             margin: 5px;
         }
+        
         .modal-content {
             background: var(--bg);
             border: 1px solid var(--border);
+            border-radius: 16px;
         }
+        
         .form-control, .form-select {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid var(--border);
             color: white;
+            padding: 12px 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
+        
         .form-control:focus, .form-select:focus {
             background: rgba(255, 255, 255, 0.15);
             border-color: #3BA7FF;
             color: white;
+            box-shadow: 0 0 0 0.2rem rgba(59, 167, 255, 0.25);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .input-group-text {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Horizontal Scroll Tabs for Mobile */
+        .nav-pills {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 15px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            margin: 0 -10px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        .nav-pills::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .nav-pills .nav-item {
+            flex: 0 0 auto;
+            white-space: nowrap;
+        }
+        
+        .nav-pills .nav-link {
+            border-radius: 12px;
+            margin: 4px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            padding: 12px 20px;
+            font-weight: 500;
+            white-space: nowrap;
+            border: 1px solid var(--border);
+        }
+        
+        .nav-pills .nav-link:hover {
+            color: var(--text-primary);
+            background: rgba(59, 167, 255, 0.1);
+            border-color: #3BA7FF;
+        }
+        
+        .nav-pills .nav-link.active {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 167, 255, 0.3);
+            border-color: transparent;
+        }
+        
+        /* Scroll indicator for tabs */
+        .tabs-container {
+            position: relative;
+            margin: 0 -15px;
+            padding: 0 15px;
+        }
+        
+        .tabs-container::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            background: linear-gradient(90deg, transparent, var(--bg));
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .tabs-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            background: linear-gradient(270deg, transparent, var(--bg));
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .btn-close-white {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+        
+        .alert {
+            border-radius: 12px;
+            border: none;
+        }
+        
+        .stats-badge {
+            background: var(--gradient);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .brand {
+                font-size: 1.3rem;
+            }
+            
+            .admin-profile {
+                text-align: center;
+                margin-top: 10px;
+            }
+            
+            .content-card {
+                padding: 15px;
+            }
+            
+            .btn-action {
+                margin: 2px;
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+            
+            .modal-dialog {
+                margin: 10px;
+            }
+            
+            .nav-pills {
+                padding-bottom: 20px;
+                margin-bottom: 10px;
+            }
+            
+            .nav-pills .nav-link {
+                font-size: 0.85rem;
+                padding: 10px 16px;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h4 {
+                font-size: 1.3rem;
+            }
+            
+            .tabs-container {
+                margin: 0 -10px;
+                padding: 0 10px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .d-flex.justify-content-between {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .d-flex.justify-content-between h4 {
+                text-align: center;
+            }
+            
+            .content-card h5 {
+                font-size: 1.1rem;
+            }
+            
+            .modal-content {
+                margin: 10px;
+            }
+            
+            .nav-pills .nav-link {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+            
+            /* Enhanced scroll for very small devices */
+            .nav-pills {
+                padding-bottom: 25px;
+            }
+            
+            .tabs-container::after,
+            .tabs-container::before {
+                width: 30px;
+            }
+        }
+        
+        /* For Content Tabs Specific Styling */
+        #contentTabs.nav-pills {
+            justify-content: flex-start;
+        }
+        
+        #contentTabs .nav-link {
+            display: flex;
+            align-items: center;
+            min-width: max-content;
+        }
+        
+        /* Smooth scrolling animation */
+        .nav-pills {
+            scroll-behavior: smooth;
+        }
+        
+        /* Active tab indicator for better UX */
+        .nav-pills .nav-link.active {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Hide scrollbar but keep functionality on all devices */
+        @media (min-width: 769px) {
+            .nav-pills {
+                flex-wrap: wrap;
+                justify-content: center;
+                overflow-x: visible;
+                padding-bottom: 10px;
+                margin: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            
+            .tabs-container::after,
+            .tabs-container::before {
+                display: none;
+            }
+        }
+        
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar admin-nav sticky-top">
-        <div class="container-fluid d-flex justify-content-between">
-            <a class="navbar-brand brand fs-4" href="dashboard.php">
+    <nav class="navbar admin-nav navbar-expand-lg sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand brand" href="dashboard.php">
                 <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
             </a>
-            <div class="admin-profile text-end">
-                <span class="text-white-50 small">
-                    <i class="fas fa-user"></i> <?= $_SESSION['admin_email'] ?>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarAdmin">
+                <span class="navbar-toggler-icon">
+                    <i class="fas fa-bars text-white"></i>
                 </span>
-                <a href="logout.php" class="btn btn-outline-danger btn-sm ms-2">
-                    <i class="fas fa-sign-out-alt me-1"></i> Logout
-                </a>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarAdmin">
+                <div class="admin-profile ms-auto text-lg-end">
+                    <span class="text-white-50 me-3">
+                        <i class="fas fa-user me-1"></i> <?= htmlspecialchars($_SESSION['admin_email']) ?>
+                    </span>
+                    <a href="logout.php" class="btn btn-outline-danger btn-sm">
+                        <i class="fas fa-sign-out-alt me-1"></i> Logout
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -260,144 +544,275 @@ $teamMembers = $pdo->query("SELECT * FROM team_members ORDER BY order_index, id"
         
         <?php if ($message): ?>
         <div class="alert alert-<?= $messageType === 'success' ? 'success' : 'danger' ?> alert-dismissible fade show" role="alert">
+            <i class="fas fa-<?= $messageType === 'success' ? 'check-circle' : 'exclamation-triangle' ?> me-2"></i>
             <?= htmlspecialchars($message) ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
         </div>
         <?php endif; ?>
 
-        <ul class="nav nav-pills justify-content-center mb-4">
-            <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#services">Services</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#courses">Courses</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#projects">Projects</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#team">Team Members</button></li>
-        </ul>
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex flex-wrap gap-3 justify-content-center mb-3">
+                    <span class="stats-badge">
+                        <i class="fas fa-briefcase me-1"></i> <?= count($services) ?> Services
+                    </span>
+                    <span class="stats-badge">
+                        <i class="fas fa-graduation-cap me-1"></i> <?= count($courses) ?> Courses
+                    </span>
+                    <span class="stats-badge">
+                        <i class="fas fa-project-diagram me-1"></i> <?= count($projects) ?> Projects
+                    </span>
+                    <span class="stats-badge">
+                        <i class="fas fa-users me-1"></i> <?= count($teamMembers) ?> Team Members
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs-container">
+            <ul class="nav nav-pills justify-content-center mb-4" id="contentTabs">
+                <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#services">
+                        <i class="fas fa-briefcase me-2"></i>Services
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#courses">
+                        <i class="fas fa-graduation-cap me-2"></i>Courses
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#projects">
+                        <i class="fas fa-project-diagram me-2"></i>Projects
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#team">
+                        <i class="fas fa-users me-2"></i>Team Members
+                    </button>
+                </li>
+            </ul>
+        </div>
 
         <div class="tab-content">
             <!-- Services Tab -->
             <div class="tab-pane fade show active" id="services">
-                <div class="d-flex justify-content-between mb-3">
-                    <h4>Services</h4>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="mb-0">
+                        <i class="fas fa-briefcase me-2"></i>Services
+                    </h4>
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addServiceModal">
-                        <i class="fas fa-plus"></i> Add Service
+                        <i class="fas fa-plus me-2"></i>Add Service
                     </button>
                 </div>
+                
+                <?php if (empty($services)): ?>
+                <div class="text-center py-5">
+                    <i class="fas fa-briefcase fa-3x text-white-50 mb-3"></i>
+                    <p class="text-white-50">No services found. Add your first service to get started.</p>
+                </div>
+                <?php else: ?>
                 <div class="row">
                     <?php foreach ($services as $service): ?>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-lg-6 col-xl-4 mb-4">
                         <div class="content-card">
-                            <h5><?= htmlspecialchars($service['title']) ?></h5>
-                            <p class="text-white-50 small"><?= htmlspecialchars(substr($service['description'], 0, 100)) ?>...</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-sm btn-warning" onclick="editService(<?= htmlspecialchars(json_encode($service)) ?>)">
-                                    <i class="fas fa-edit"></i> Edit
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1"><?= htmlspecialchars($service['title']) ?></h5>
+                                    <p class="text-white-50 small mb-2">
+                                        <i class="fas fa-sort-numeric-down me-1"></i>Order: <?= $service['order_index'] ?>
+                                    </p>
+                                </div>
+                                <i class="fas <?= htmlspecialchars($service['icon']) ?> fa-lg text-primary"></i>
+                            </div>
+                            <p class="text-white-50 small mb-3"><?= htmlspecialchars(substr($service['description'], 0, 100)) ?>...</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-sm btn-warning btn-action" onclick="editService(<?= htmlspecialchars(json_encode($service)) ?>)">
+                                    <i class="fas fa-edit me-1"></i>Edit
                                 </button>
-                                <form method="POST" style="display:inline;" onsubmit="return confirm('Delete this service?')">
+                                <form method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this service?')">
                                     <input type="hidden" name="action" value="delete_service">
                                     <input type="hidden" name="id" value="<?= $service['id'] ?>">
-                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                                    <button type="submit" class="btn btn-sm btn-danger btn-action">
+                                        <i class="fas fa-trash me-1"></i>Delete
+                                    </button>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <?php endforeach; ?>
                 </div>
+                <?php endif; ?>
             </div>
 
             <!-- Courses Tab -->
             <div class="tab-pane fade" id="courses">
-                <div class="d-flex justify-content-between mb-3">
-                    <h4>Courses</h4>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="mb-0">
+                        <i class="fas fa-graduation-cap me-2"></i>Courses
+                    </h4>
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCourseModal">
-                        <i class="fas fa-plus"></i> Add Course
+                        <i class="fas fa-plus me-2"></i>Add Course
                     </button>
                 </div>
+                
+                <?php if (empty($courses)): ?>
+                <div class="text-center py-5">
+                    <i class="fas fa-graduation-cap fa-3x text-white-50 mb-3"></i>
+                    <p class="text-white-50">No courses found. Add your first course to get started.</p>
+                </div>
+                <?php else: ?>
                 <div class="row">
                     <?php foreach ($courses as $course): ?>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-lg-6 col-xl-4 mb-4">
                         <div class="content-card">
-                            <h5><?= htmlspecialchars($course['title']) ?></h5>
-                            <p class="text-white-50 small"><?= htmlspecialchars(substr($course['description'], 0, 100)) ?>...</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-sm btn-warning" onclick="editCourse(<?= htmlspecialchars(json_encode($course)) ?>)">
-                                    <i class="fas fa-edit"></i> Edit
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1"><?= htmlspecialchars($course['title']) ?></h5>
+                                    <div class="d-flex flex-wrap gap-2 mt-1">
+                                        <span class="badge bg-<?= $course['badge'] === 'Premium' ? 'warning' : 'success' ?>">
+                                            <?= htmlspecialchars($course['badge']) ?>
+                                        </span>
+                                        <?php if ($course['level']): ?>
+                                        <span class="badge bg-info"><?= htmlspecialchars($course['level']) ?></span>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <i class="fas <?= htmlspecialchars($course['icon']) ?> fa-lg text-primary"></i>
+                            </div>
+                            <p class="text-white-50 small mb-2">
+                                <?php if ($course['duration']): ?>
+                                <i class="fas fa-clock me-1"></i><?= htmlspecialchars($course['duration']) ?>
+                                <?php endif; ?>
+                            </p>
+                            <p class="text-white-50 small mb-3"><?= htmlspecialchars(substr($course['description'], 0, 100)) ?>...</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-sm btn-warning btn-action" onclick="editCourse(<?= htmlspecialchars(json_encode($course)) ?>)">
+                                    <i class="fas fa-edit me-1"></i>Edit
                                 </button>
-                                <form method="POST" style="display:inline;" onsubmit="return confirm('Delete this course?')">
+                                <form method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this course?')">
                                     <input type="hidden" name="action" value="delete_course">
                                     <input type="hidden" name="id" value="<?= $course['id'] ?>">
-                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                                    <button type="submit" class="btn btn-sm btn-danger btn-action">
+                                        <i class="fas fa-trash me-1"></i>Delete
+                                    </button>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <?php endforeach; ?>
                 </div>
+                <?php endif; ?>
             </div>
 
             <!-- Projects Tab -->
             <div class="tab-pane fade" id="projects">
-                <div class="d-flex justify-content-between mb-3">
-                    <h4>Projects</h4>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="mb-0">
+                        <i class="fas fa-project-diagram me-2"></i>Projects
+                    </h4>
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProjectModal">
-                        <i class="fas fa-plus"></i> Add Project
+                        <i class="fas fa-plus me-2"></i>Add Project
                     </button>
                 </div>
+                
+                <?php if (empty($projects)): ?>
+                <div class="text-center py-5">
+                    <i class="fas fa-project-diagram fa-3x text-white-50 mb-3"></i>
+                    <p class="text-white-50">No projects found. Add your first project to get started.</p>
+                </div>
+                <?php else: ?>
                 <div class="row">
                     <?php foreach ($projects as $project): ?>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-lg-6 col-xl-4 mb-4">
                         <div class="content-card">
-                            <h5><?= htmlspecialchars($project['name']) ?></h5>
-                            <p class="text-white-50 small"><?= htmlspecialchars(substr($project['description'], 0, 100)) ?>...</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-sm btn-warning" onclick="editProject(<?= htmlspecialchars(json_encode($project)) ?>)">
-                                    <i class="fas fa-edit"></i> Edit
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1"><?= htmlspecialchars($project['name']) ?></h5>
+                                    <span class="badge bg-<?= $project['status'] === 'Live' ? 'success' : 'secondary' ?>">
+                                        <?= htmlspecialchars($project['status']) ?>
+                                    </span>
+                                </div>
+                                <i class="fas <?= htmlspecialchars($project['icon']) ?> fa-lg text-primary"></i>
+                            </div>
+                            <p class="text-white-50 small mb-3"><?= htmlspecialchars(substr($project['description'], 0, 100)) ?>...</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-sm btn-warning btn-action" onclick="editProject(<?= htmlspecialchars(json_encode($project)) ?>)">
+                                    <i class="fas fa-edit me-1"></i>Edit
                                 </button>
-                                <form method="POST" style="display:inline;" onsubmit="return confirm('Delete this project?')">
+                                <form method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this project?')">
                                     <input type="hidden" name="action" value="delete_project">
                                     <input type="hidden" name="id" value="<?= $project['id'] ?>">
-                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                                    <button type="submit" class="btn btn-sm btn-danger btn-action">
+                                        <i class="fas fa-trash me-1"></i>Delete
+                                    </button>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <?php endforeach; ?>
                 </div>
+                <?php endif; ?>
             </div>
 
             <!-- Team Tab -->
             <div class="tab-pane fade" id="team">
-                <div class="d-flex justify-content-between mb-3">
-                    <h4>Team Members</h4>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="mb-0">
+                        <i class="fas fa-users me-2"></i>Team Members
+                    </h4>
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTeamModal">
-                        <i class="fas fa-plus"></i> Add Team Member
+                        <i class="fas fa-plus me-2"></i>Add Team Member
                     </button>
                 </div>
+                
+                <?php if (empty($teamMembers)): ?>
+                <div class="text-center py-5">
+                    <i class="fas fa-users fa-3x text-white-50 mb-3"></i>
+                    <p class="text-white-50">No team members found. Add your first team member to get started.</p>
+                </div>
+                <?php else: ?>
                 <div class="row">
                     <?php foreach ($teamMembers as $member): ?>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-lg-6 col-xl-4 mb-4">
                         <div class="content-card">
-                            <h5><?= htmlspecialchars($member['name']) ?></h5>
-                            <p class="text-white-50 small"><?= htmlspecialchars($member['role']) ?></p>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-sm btn-warning" onclick="editTeam(<?= htmlspecialchars(json_encode($member)) ?>)">
-                                    <i class="fas fa-edit"></i> Edit
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1"><?= htmlspecialchars($member['name']) ?></h5>
+                                    <p class="text-white-50 small mb-0"><?= htmlspecialchars($member['role']) ?></p>
+                                </div>
+                                <?php if ($member['icon']): ?>
+                                <i class="fas <?= htmlspecialchars($member['icon']) ?> fa-lg text-primary"></i>
+                                <?php endif; ?>
+                            </div>
+                            <p class="text-white-50 small mb-3">
+                                <strong>Skills:</strong> <?= htmlspecialchars($member['skills']) ?>
+                            </p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-sm btn-warning btn-action" onclick="editTeam(<?= htmlspecialchars(json_encode($member)) ?>)">
+                                    <i class="fas fa-edit me-1"></i>Edit
                                 </button>
-                                <form method="POST" style="display:inline;" onsubmit="return confirm('Delete this team member?')">
+                                <form method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this team member?')">
                                     <input type="hidden" name="action" value="delete_team">
                                     <input type="hidden" name="id" value="<?= $member['id'] ?>">
-                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                                    <button type="submit" class="btn btn-sm btn-danger btn-action">
+                                        <i class="fas fa-trash me-1"></i>Delete
+                                    </button>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <?php endforeach; ?>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </main>
 
+    <!-- Rest of your modals and JavaScript remain exactly the same -->
     <!-- Add Service Modal -->
     <div class="modal fade" id="addServiceModal" tabindex="-1">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add Service</h5>
@@ -596,6 +1011,12 @@ $teamMembers = $pdo->query("SELECT * FROM team_members ORDER BY order_index, id"
             </div>
         </div>
     </div>
+
+    <footer class="text-center py-4 mt-5">
+        <small class="text-white-50">&copy;
+            <?= date('Y') ?> RaYnk Labs • Content Management Panel
+        </small>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -837,7 +1258,23 @@ $teamMembers = $pdo->query("SELECT * FROM team_members ORDER BY order_index, id"
             bsModal.show();
             modal.addEventListener('hidden.bs.modal', () => modal.remove());
         }
+
+        // Mobile menu enhancement
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggler = document.querySelector('.navbar-toggler');
+            if (navToggler) {
+                navToggler.innerHTML = '<i class="fas fa-bars text-white"></i>';
+            }
+            
+            // Add active state to tab buttons
+            const tabButtons = document.querySelectorAll('#contentTabs .nav-link');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
     </script>
 </body>
 </html>
-

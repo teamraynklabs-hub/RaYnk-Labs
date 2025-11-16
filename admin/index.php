@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($admin && password_verify($password, $admin['password_hash'])) {
             $_SESSION['admin_id'] = (int) $admin['id'];
             $_SESSION['admin_email'] = $admin['email'];
-            header('Location: /projects/admin/dashboard.php');
+            header('Location: /raynk-labs/admin/dashboard.php');
             exit;
         }
     }

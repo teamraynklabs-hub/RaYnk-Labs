@@ -24,7 +24,7 @@ function redirectWithFlash(string $status, string $message): void
         'message' => $message,
     ];
 
-    header('Location: ../public/index.php');
+    header('Location: /raynk-labs/index.php');
     exit;
 }
 

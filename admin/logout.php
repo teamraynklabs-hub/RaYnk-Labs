@@ -5,6 +5,6 @@ session_start();
 session_unset();
 session_destroy();
 
-header('Location: /projects/admin/index.php');
+header('Location: /raynk-labs/admin/index.php');
 exit;
 ?>
